@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --very-dark-blue: #0a0a23;
+  --white: #ffffff;
+  --yellow: #f1be32;
+  --golden-yellow: #feac32;
+}
+
+body {
+  background-color: var(--very-dark-blue);
+  text-align: center;
+  color: var(--white);
+}
+
+h1 {
+  margin: 15px 0 20px;
+}
+
+.note, .input {
+   max-width: 300px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    border-radius: 10px;
+}
+
+.note {
+  background-color: rgb(24, 65, 24);
+}
+
+.input {
+  background-color: var(--white);
+  border: none;
+  color: var(--very-dark-blue);
+  box-shadow: #e7bc44;
+  
+}
+
+input {
+    padding: 15px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#check-btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 20px;
+    color: var(--very-dark-blue);
+  background-color: var(--golden-yellow);
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border-color: var(--golden-yellow);
+  border-width: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#check-btn:hover {
+    background-image: linear-gradient(#ffcc4c, #f89808);
+}
+
+label {
+    font-size: 1rem;
+}

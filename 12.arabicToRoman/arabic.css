@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --light-grey: #f5f6f7;
+  --dark-blue: #1b1b32;
+  --orange: #f1be32;
+  --blue: #5e548e;
+  --light-blue: #9f86c0;
+  --rose: #e0b1cb;
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+  font-size: 1.125rem;
+  color: var(--light-grey);
+  background-color: var(--dark-blue);
+}
+
+.input,
+ #output {
+    width: clamp(320px, 50vw, 460px);
+    border: 4px solid var(--light-blue);
+    padding: 40px;
+    margin-top: 30px;
+}
+
+.input {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 20px;
+    height: 300px;
+    background: var(--blue);
+}
+
+h1,
+#output {
+    margin-top: 30px;
+}
+
+h2 {
+    text-align: center;
+}
+
+#convert-btn {
+    background: var(--orange);
+    font-size: 1.3rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+#convert-btn:hover {
+    background-image: linear-gradient(#ffcc4c, #f89808);
+}
+
+#number,
+#output {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--light-grey);
+}
+
+#number {
+    background: var(--dark-blue);
+    width: 100%;
+}
+
+#output {
+    min-height: 100px;
+    background: var(--rose);
+}
