@@ -1,0 +1,119 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark-grey: #1b1b32;
+  --light-grey: #f5f6f7;
+  --black: #000;
+  --white: #fff;
+  --grey: #3b3b4f;
+  --golden-yellow: #fecc4c;
+  --yellow: #ffcc4c;
+  --gold: #feac32;
+  --orange: #ffac33;
+  --dark-orange: #f89808;
+}
+
+body {
+  background-color: var(--dark-grey);
+  color: var(--light-grey);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 25px 0;
+    text-align: center;
+  }
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    font-size: 1.2rem;
+  }
+input {
+    font-size: 1rem;
+    padding: 5px;
+}
+
+#purchase-btn{
+    cursor: pointer;
+  width: 100px;
+  margin: 10px 0 10px 0.5rem;
+  background-color: var(--gold);
+  background-image: linear-gradient(var(--golden-yellow), var(--orange));
+  border-color: var(--gold);
+  border-width: 3px;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+#purchase-btn:hover:enabled {
+    background-image: linear-gradient(var(--yellow), var(--dark-orange));
+  }
+
+.total-conatiner {
+    margin: 0 auto;
+    width: 200px;
+    height: 40px;
+    background: var(--golden-yellow);
+    padding: 5px;
+} 
+
+.total {
+    background: var(--black);
+    padding: 5px;
+} 
+
+.total > p {
+    font-weight: bolder;
+}
+
+.small {
+    background: var(--golden-yellow);
+    width: 50px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+#container-register {
+    background: var(--golden-yellow);
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-container {
+    width: 30%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    margin-right: 15px;
+    border: none;
+}
+
+.btn-container > div {
+    background-color: #000;
+}
