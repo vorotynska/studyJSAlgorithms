@@ -1,5 +1,6 @@
 // Input elements and variables
-const priceInput = document.getElementById("price");
+let cidUl = document.querySelector('.cid-ul');
+let total = document.querySelector('.total');
 const cashInput = document.getElementById("cash");
 const changeDueElement = document.getElementById("change-due");
 const purchaseBtn = document.getElementById("purchase-btn");
@@ -29,32 +30,37 @@ let cid = [
   ["TWENTY", 60],
   ["ONE HUNDRED", 100]
 ];
+//let cid = [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]
+let price = 3.26
 
-let price = 1.87;
+total.innerHTML = `
+<p>Total: $${price}</p>
+`
 
 // Function to calculate change
 function calculateChange(price, cash, cid) {
   let changeDue = cash - price;
   const changeArray = [];
   let totalCid = cid.reduce((sum, curr) => sum + curr[1], 0);
-
+console.log(totalCid)
   if (changeDue < 0) {
     return { status: "INSUFFICIENT_FUNDS", change: [] };
   }
 
   if (changeDue === 0) {
-    return { status: "CLOSED", change: [] };
+    return { status: "EQUAL", change: [] };
   }
 
   totalCid = parseFloat(totalCid.toFixed(2));
-
+  
   if (changeDue > totalCid) {
     return { status: "INSUFFICIENT_FUNDS", change: [] };
   }
 
-  cid.reverse(); // Start from the largest denomination
+  const cidCopy = [...cid].reverse();
+  //cid.reverse(); // Start from the largest denomination
   for (const [unit, unitValue] of currencyUnits.reverse()) {
-    let available = cid.find(([name]) => name === unit)[1];
+    let available = cidCopy.find(([name]) => name === unit)[1];
     let amountToGive = 0;
 
     while (changeDue >= unitValue && available > 0) {
@@ -68,7 +74,10 @@ function calculateChange(price, cash, cid) {
       changeArray.push([unit, parseFloat(amountToGive.toFixed(2))]);
     }
   }
-
+  console.log(`cash: ${cash}`)
+ 
+  console.log(`cid: ${cid}`)
+  
   if (changeDue > 0) {
     return { status: "INSUFFICIENT_FUNDS", change: [] };
   }
@@ -92,7 +101,7 @@ function handlePurchase() {
 
   const result = calculateChange(price, cash, [...cid]);
 
-  if (result.status === "CLOSED") {
+  if (result.status === "EQUAL") {
     changeDueElement.textContent = "No change due - customer paid with exact cash";
   } else if (result.status === "INSUFFICIENT_FUNDS") {
     changeDueElement.textContent = "Status: INSUFFICIENT_FUNDS";
@@ -101,10 +110,14 @@ function handlePurchase() {
       .map(([unit, amount]) => `${unit}: $${amount}`)
       .join(" ");
     changeDueElement.textContent = `Status: OPEN ${changeString}`;
+  } else if (result.status === "CLOSED") {
+    const changeString = result.change
+      .map(([unit, amount]) => `${unit}: $${amount}`)
+      .join(" ");
+    changeDueElement.textContent = `Status: CLOSED ${changeString}`;
   }
 }
 
 // Attach event listener
 purchaseBtn.addEventListener("click", handlePurchase);
-
 
